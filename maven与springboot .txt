@@ -1,0 +1,104 @@
+	maven学习笔记  @陈家斌
+	
+	项目创建的时候我们可以选择通过自定义配置Maven文件来创建，也可以用Spring官方
+	提供的Spring Initializr工具，Spring Initializr是一个可以简化Spring Boot项目构建的工具，
+	有两种使用Spring Initializr的方法：
+	1)官方提供的web页面工具，地址：https://start.spring.io/
+    2)开发工具集成的方式
+	项目结构如下：
+	spring-boot-1-helloworld
+    │  pom.xml    
+    ├─src
+    │  ├─main
+    │  │  ├─java
+    │  │  │  └─com
+    │  │  │      └─practice
+    │  │  │          └─springboot
+    │  │  │              └─hello
+    │  │  │                  │  SpringBoot1HelloworldApplication.java
+    │  │  │                          
+    │  │  └─resources
+    │  │      │  application.properties
+    │  │      ├─static
+    │  │      └─templates
+    │  └─test
+    │      └─java
+    │          └─com
+    │              └─practice
+    │                  └─springboot
+    │                      └─hello
+    │                              SpringBoot1HelloworldApplicationTests.java
+	
+	【【【【Spring boot的知识点】】】
+	
+    springboot 属性配置文件详解 ：：】
+	
+	application.properties 文件夹为属性配置文件夹
+	自定义属性
+	我们在使用Spring Boot的时候，通常也需要定义一些自己使用的属性，我们可以如下方式直接定义：
+	com.didispace.blog.name=程序猿DD
+	com.didispace.blog.title=Spring Boot教程
+	
+	使用@value("${属性名称}")加载对应属性
+	
+	有一些情况下，有些参数我们不希望它是一个固定的值，比如密钥，服务端口等等
+	springboot 的属性配置文件中可以通过${random}来产生int，long，string字符串
+	
+	
+	通过命令行设置属性值
+	相信用过一段时间的spring boot用户，一定知道这条命令：java -jar xxx.jar --server.port=8888
+	在命令运行时，两个连续的减号就是对application.properties进行赋值的标识
+	为了安全起见，可以通过SpringApplication.setAddCommandLineProperties(false)
+	
+	
+	【【【多环境配置】】】
+	
+	我们在开发spring boot 应用时，通常一套程序会被安装到和应用到几个不同的环境，比如开发，测试，生产等等，
+	其中每个环境的数据库地址，服务器端口，等都会不同，会不断的修改配置文件
+	
+	
+	为此我们需要配置多份不同环境的配置文件，在通过打包指令指定需要打包的内容之后进行区分打包
+	多环境配置文件名需要满足特定格式 application-{profile}.properties ,其中{profile}标识对应的环境
+	***application-dev.properties : 开发环境
+	***application-test.properties: 测试环境
+	***application-prod.properties: 生产环境
+	
+	至于哪个配置文件会被加载，需要在 application.properties 文件中通过spring.profiles.active 属性来设置
+	***spring.profiles.active = test 就会加载 application-test.profiles 配置文件的内容
+	
+	【【【构建restful api】】】
+	关于几个注解：
+	@Controller：修饰class，用来创建处理http请求的对象 
+	@RestController：Spring4之后加入的注解，原来在@Controller中返回json需要@ResponseBody来配合，如果直接用@RestController替代@Controller就不需要再配置@ResponseBody，默认返回json格式。 
+	@RequestMapping：配置url映射 
+	
+	【【【【spring boot 常用注解总结】】】】
+	@RestController 继承自@Controller 注解
+	
+	@RequestMapping 注解提供路由信息。
+	
+	
+	@EnableAutoConfiguration 注解（累级别），根据项目中的classpath中的jar，自动生成需要的bean，加载到spring中
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

@@ -1,0 +1,34 @@
+Git
+
+工作区：就是你在电脑里能看到的目录。
+暂存区：英文叫stage, 或index。一般存放在 ".git目录下" 下的index文件（.git/index）中，所以我们把暂存区有时也叫作索引（index）。
+版本库：工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。
+
+当对工作区修改（或新增）的文件执行 "git add" 命令时，暂存区的目录树被更新，同时工作区修改（或新增）的文件内容被写入到对象库中的一个新的对象中，而该对象的ID被记录在暂存区的文件索引中。 
+当执行提交操作（git commit）时，暂存区的目录树写到版本库（对象库）中，master 分支会做相应的更新。即 master 指向的目录树就是提交时暂存区的目录树。 
+
+git 在本地创建git仓库， 你可以在任何时候、任何目录中这么做，完全是本地化的。
+生成 .git 这个子目录。 这就是你的 Git 仓库了，所有有关你的此项目的快照数据都存放在这里。
+
+git clone +url(网页克隆)  拷贝远端仓库到本地
+git pull + url  (在项目的目录下执行)拉取最新代码
+git add -A  
+git commit -m "提交信息"
+git push
+
+
+git 有分支管理
+
+创建分支命令：git branch (branchname)
+切换分支命令：git checkout (branchname)
+合并分支：git merge 
+列出所有分支：git branch
+删除分支命令：git branch -d (branchname)
+
+
+远端仓库：
+
+git remote -v 查看已链接的远端仓库
+删除远端仓库 git remote rm [别名]
+git remote add origin https://github.com/jiabinC/kotlin.git      添加远端仓库
+
